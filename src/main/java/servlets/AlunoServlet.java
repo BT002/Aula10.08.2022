@@ -13,7 +13,7 @@ import dao.AlunoDAOImplMysql;
 import model.Aluno;
 
 
-@WebServlet(description = "Salvar dados aluno", urlPatterns = { "/AlunoServlet"})
+@WebServlet(urlPatterns = { "/AlunoServlet"})
 public class AlunoServlet extends HttpServlet {
    private static final long serialVersionUID = 1L;
    private AlunoDAO alunoDAO;
@@ -26,47 +26,34 @@ public class AlunoServlet extends HttpServlet {
 
    @Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		super.doPost(req, resp);
 	}
    
    public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-	   String action = request.getServletPath();
-	   
-       switch (action) {
-           case "/cadastrar_novo_aluno":
+	   String acao = request.getParameter("acao");
+	   if(acao == null) { acao = ""; }
+
+       switch (acao) {
+           case "cadastrar_novo_aluno":
         	   formularioCadastrarAluno(request, response);
                break;
-           case "/editando_dados_aluno":
+           case "editando_dados_aluno":
         	   formularioAtualizarAluno(request, response);
         	   break;
-           case "/insert_aluno":  // C - Create
+           case "insert_aluno":  // C - Create
                inserirAluno(request, response);
                break;
-           case "/update_aluno":  // U - Update
+           case "update_aluno":  // U - Update
         	   updateAluno(request, response);
         	   break;
-           case "/delete_aluno":  // D - Delete
+           case "delete_aluno":  // D - Delete
                deletarAluno(request, response);
                break;
            default:               // R - Read
                listar_alunos(request, response);
                break;
-       }
-	   
-	   String nome = request.getParameter("nome");
-	   String cpf = request.getParameter("cpf");
-
-		response.setContentType("text/html");
-		PrintWriter printWriter = response.getWriter();
-		printWriter.print("<html>");
-		printWriter.print("<body>");
-		printWriter.print("<a href=\"/aluno\">Aluno salvo com sucesso! Link para voltar </a>");
-		printWriter.print("</body>");
-		printWriter.print("</html>");
-		printWriter.close();
-      
+       }  
    }
 
    private void listar_alunos(HttpServletRequest request, HttpServletResponse response) {
@@ -93,8 +80,6 @@ public class AlunoServlet extends HttpServlet {
 	        } catch (IOException e) {
 				e.printStackTrace();
 			}
-
-		
 	}
 	
 	private void updateAluno(HttpServletRequest request, HttpServletResponse response) {
@@ -108,12 +93,11 @@ public class AlunoServlet extends HttpServlet {
         	
         	Aluno aluno = new Aluno(ra, nome, telefone, endereco, Date.valueOf(data_nascimento));
         	alunoDAO.atualizarAluno(aluno);
-			response.sendRedirect("aluno");
+			response.sendRedirect("alunos.jsp");
 			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
 	private void inserirAluno(HttpServletRequest request, HttpServletResponse response) {
@@ -127,13 +111,12 @@ public class AlunoServlet extends HttpServlet {
 	    	String data_nascimento = request.getParameter("data_nascimento");
 	    	
 	    	Aluno aluno = new Aluno(ra, nome, telefone, endereco, Date.valueOf(data_nascimento));
-	    	alunoDAO.atualizarAluno(aluno);
-			response.sendRedirect("aluno");
+	    	alunoDAO.criarAluno(aluno);
+			response.sendRedirect("alunos.jsp");
 		
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
 	
@@ -146,7 +129,6 @@ public class AlunoServlet extends HttpServlet {
 		} catch (ServletException | IOException e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
 	private void formularioAtualizarAluno(HttpServletRequest request, HttpServletResponse response) {
@@ -171,5 +153,5 @@ public class AlunoServlet extends HttpServlet {
 	
 	public void destroy() {
 	
-	   }
+	}
 }

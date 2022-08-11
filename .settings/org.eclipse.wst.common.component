@@ -9,7 +9,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
                 
         <property name="java-output-path" value="/Aula10.08.2022/target/classes"/>
-        <property name="context-root" value="projetoweb2"/>
+        <property name="context-root" value="projetoweb"/>
             
     </wb-module>
     

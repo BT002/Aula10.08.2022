@@ -8,36 +8,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto 10/08/2022</title>
+    <title>Projeto Web</title>
     <link rel="stylesheet" href="css/style.css">
 	<style>
-* {
-    margin: 0 auto;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif;
-}
-#menu-h{
-    background-color: rgb(37, 37, 39);
-}
-#menu-h ul {
-    max-width: 800px;
-    list-style: none;
-    padding: 0;
-}
-#menu-h ul li {
-    display: inline;
-}
-#menu-h ul li a {
-    color: #FFF;
-    padding: 20px;
-    display: inline-block;
-    text-decoration: none;
-    transition: background .4s;
-}
-#menu-h ul li a:hover {
-    background-color: rgb(24, 139, 233);
-}
+		* {
+		    margin: 0 auto;
+		    padding: 0;
+		    box-sizing: border-box;
+		    font-family: 'Open Sans', sans-serif;
+		}
+		#menu-h{
+		    background-color: rgb(37, 37, 39);
+		}
+		#menu-h ul {
+		    max-width: 800px;
+		    list-style: none;
+		    padding: 0;
+		}
+		#menu-h ul li {
+		    display: inline;
+		}
+		#menu-h ul li a {
+		    color: #FFF;
+		    padding: 20px;
+		    display: inline-block;
+		    text-decoration: none;
+		    transition: background .4s;
+		}
+		#menu-h ul li a:hover {
+		    background-color: rgb(24, 139, 233);
+		}
+		
+		footer{
+			background: #ffab62;
+			width: 100%;
+			height: 100px;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
 /*
 #menu-h ul li:last-child a {
     float: right;
@@ -63,6 +72,15 @@
             <li><a href="#">Cursos</a></li>
         </ul>
     </nav>
+    
+
+
+  <footer id="rodape">
+	    &copy; BT002  HTML + CSS
+	    <h3><a href="http://www.google.com">Link para Google</a></h3>
+		<h3><a href="http://www.yahoo.com">Link para Yahoo</a></h3>
+		<h3><a href="https://www.terra.com.br">Link para Terra</a></h3>
+  </footer>
 
 </body>
 
